@@ -1,13 +1,18 @@
 import React from "react";
+import { Button, Card } from "react-bootstrap";
 
-const MovieCard = (props) => {
+const MovieCard = ({movie}) => {
   return (
-    <div className="movie-card">
-      <img src={props.posterUrl} alt="poster" />
-      <h1>{props.title}</h1>
-      <div className="desc"><b>Description:</b> {props.description}</div>
-      <div><b>Rate:</b> {props.rate}</div>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={movie.posterUrl}/>
+      <Card.Body>
+        <Card.Title>{movie.title}</Card.Title>
+        <Card.Text>
+          {movie.description}
+        </Card.Text>
+        <Button variant="primary">Rate</Button>
+      </Card.Body>
+    </Card>
   );
 };
 

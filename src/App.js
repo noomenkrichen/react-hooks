@@ -2,6 +2,7 @@ import MovieList from "./components/MovieList";
 import AddMovieModal from "./components/AddMovieModal";
 import { useState } from "react";
 import "./App.css";
+import MyNavbar from "./components/MyNavbar";
 
 function App() {
   const createMovie = (title, description, posterUrl, rate) => {
@@ -38,6 +39,18 @@ function App() {
       "img/avengers.jpg",
       5.0
     ),
+    createMovie(
+      "Iron-Man",
+      "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+      "img/iron-man.jpg",
+      4.2
+    ),
+    createMovie(
+      "Hannibal",
+      "Explores the early relationship between renowned psychiatrist, Hannibal Lecter, and his patient, a young FBI criminal profiler, who is haunted by his ability to empathize with serial killers.",
+      "img/hannibal.jpg",
+      4.2
+    ),
   ]);
 
   const addMovie = (obj) => {
@@ -73,6 +86,7 @@ function App() {
 
   return (
     <div className="App">
+      <MyNavbar/>
       <div id="movies" className="movie-list">
         <MovieList movies={movies} />
       </div>
