@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 
 const MovieList = ({ movies }) => {
   return movies.map((el, i) => (
-    <div id={i}>
+    <div key={i}>
       <MovieCard
         title={el.title}
         description={el.description}

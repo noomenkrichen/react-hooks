@@ -1,5 +1,5 @@
 import MovieList from "./components/MovieList";
-import Filter from "./components/Filter";
+import AddMovieModal from "./components/AddMovieModal";
 import { useState } from "react";
 import "./App.css";
 
@@ -40,12 +40,9 @@ function App() {
     ),
   ]);
 
-  const addMovie = () => {
-    const title = prompt("Title");
-    const description = prompt("Description");
-    const posterUrl = prompt("Poster Url");
-    const rate = prompt("Rate");
-    setMovies([...movies, createMovie(title, description, posterUrl, rate)]);
+  const addMovie = (obj) => {
+    setMovies([...movies, obj]);
+    console.log(movies);
   };
 
   const filterMovies = () => {
@@ -79,11 +76,8 @@ function App() {
       <div id="movies" className="movie-list">
         <MovieList movies={movies} />
       </div>
-      <div id="btn1">
-        <button onClick={addMovie}>Add movie</button>
-        <button onClick={filterMovies}>Filter movie by rate</button>
-        <button onClick={filterMoviesTitle}>Filter movie by title</button>
-        <button onClick={searchMovies}>Search movies by word</button>
+      <div id="btn">
+        <AddMovieModal addMovie={addMovie} />
       </div>
     </div>
   );
