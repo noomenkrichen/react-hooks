@@ -48,7 +48,7 @@ function App() {
     setMovies([...movies, createMovie(title, description, posterUrl, rate)]);
   };
 
-  const filterMovies = () => {};
+  //const filterMovies = () => {};
 
   return (
     <div className="App">
@@ -63,5 +63,3 @@ function App() {
 }
 
 export default App;
-
-//use Modal to input new movie details
