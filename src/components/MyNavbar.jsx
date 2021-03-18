@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
 
 
-const MyNavbar = () => {
+const MyNavbar = (props) => {
     return(
         <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">MyMoviesTube</Navbar.Brand>
+            <Navbar.Brand href="#home">My Videos Tech</Navbar.Brand>
             <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
             </Nav>
             <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
+                <FormControl type="text" placeholder="Search movie by title" className="mr-sm-2" onChange={(e) => props.searchMovies(e.target.value)}/>
+                <Button variant="outline-info">Search</Button>
             </Form>
         </Navbar>
-
     );
 }
 

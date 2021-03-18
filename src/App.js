@@ -51,48 +51,57 @@ function App() {
       "img/hannibal.jpg",
       4.2
     ),
+    createMovie(
+      "Spider-Man: Homecoming",
+      "Peter Parker balances his life as an ordinary high school student in Queens with his superhero alter-ego Spider-Man, and finds himself on the trail of a new menace prowling the skies of New York City.",
+      "img/spider-man2.jpg",
+      4.2
+    ),
+    createMovie(
+      "The Godfather",
+      "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
+      "img/god-father.jpg",
+      4.2
+    ),
+    createMovie(
+      "The Shawshank Redemption",
+      "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "img/shawshank.jpg",
+      4.2
+    ),
+    createMovie(
+      "Dexter",
+      "By day, mild-mannered Dexter is a blood-spatter analyst for the Miami police. But at night, he is a serial killer who only targets other murderers.",
+      "img/dexter.jpg",
+      4.2
+    ),
   ]);
 
+  const [display, setDisplay] = useState([...movies]);
+        
   const addMovie = (obj) => {
     setMovies([...movies, obj]);
-    console.log(movies);
+    setDisplay([...movies, obj]);
   };
 
-  const filterMovies = () => {
-    const arr = [...movies];
-    const rate = prompt("Rate");
-    setMovies(arr.filter((el) => el.rate >= rate));
-  };
-
-  const filterMoviesTitle = () => {
-    const arr = [...movies];
-    const str = prompt("Title");
-    setMovies(
-      arr.filter((el) => el.title.toLowerCase().includes(str.toLowerCase()))
-    );
-  };
-
-  const searchMovies = () => {
-    const arr = [...movies];
-    const str = prompt("Word");
-    setMovies(
+  const searchMovies = (str) => {
+    let arr = [...movies];
+    setDisplay(
       arr.filter(
         (el) =>
-          el.title.toLowerCase().includes(str.toLowerCase()) ||
-          el.description.toLowerCase().includes(str.toLowerCase())
+          el.title.toLowerCase().includes(str.toLowerCase())
       )
     );
   };
 
   return (
     <div className="App">
-      <MyNavbar/>
-      <div id="movies" className="movie-list">
-        <MovieList movies={movies} />
+      <MyNavbar searchMovies={searchMovies}/>
+      <AddMovieModal addMovie={addMovie} />
+      <div className="movie-list">
+      <MovieList movies={display} />
       </div>
-      <div id="btn">
-        <AddMovieModal addMovie={addMovie} />
-      </div>
+      
     </div>
   );
 }
