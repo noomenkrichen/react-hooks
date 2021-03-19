@@ -62,7 +62,7 @@ function AddMovieModal(props) {
               props.addMovie({
                 title: title,
                 description: description,
-                posterUrl: `img/${posterUrl}`,
+                posterUrl: `img/${posterUrl.split("\\")[2]}`,
                 rate: rate,
               })
             }
