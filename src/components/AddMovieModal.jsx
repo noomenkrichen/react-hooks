@@ -17,7 +17,7 @@ function AddMovieModal(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Movie</Modal.Title>
+          <Modal.Title>Add new movie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -27,9 +27,9 @@ function AddMovieModal(props) {
                 placeholder="Enter movie title..."
                 onChange={(e) => setTitle(e.target.value)}
               />
-              <Form.File
-                id="posterUrl"
-                label="Choose poster URL:"
+              <Form.Control
+                type="text"
+                placeholder="Enter poster URL..."
                 onChange={(e) => setPosterUrl(e.target.value)}
               />
               <Form.Control
@@ -51,7 +51,7 @@ function AddMovieModal(props) {
               props.addMovie({
                 title: title,
                 description: description,
-                posterUrl: `img/${posterUrl.split("\\")[2]}`,
+                posterUrl: posterUrl,
                 rate: 0,
               });
               handleClose();

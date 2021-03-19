@@ -1,35 +1,35 @@
 import React from "react";
-import Rating from "@material-ui/lab/Rating";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-
-export default function Rate() {
-  const [value, setValue] = React.useState(2);
-
+import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import ReactStars from "react-stars";
+const Rate = (props) => {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
   return (
-    <div>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Controlled</Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="#home">My Movies App</Navbar.Brand>
+      <Nav className="mr-auto">
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          color2={"#ffd700"}
         />
-      </Box>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Read only</Typography>
-        <Rating name="read-only" value={value} readOnly />
-      </Box>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Disabled</Typography>
-        <Rating name="disabled" value={value} disabled />
-      </Box>
-      <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Pristine</Typography>
-        <Rating name="pristine" value={null} />
-      </Box>
-    </div>
+        {/* <Nav.Link href="#home">Home</Nav.Link>
+        <Nav.Link href="#features">Features</Nav.Link>
+        <Nav.Link href="#pricing">Pricing</Nav.Link> */}
+      </Nav>
+      <Form inline>
+        <FormControl
+          type="text"
+          placeholder="Search movie by title"
+          className="mr-sm-2"
+          onChange={(e) => props.searchMovies(e.target.value)}
+        />
+        {/* <Button variant="outline-info">Search</Button> */}
+      </Form>
+    </Navbar>
   );
-}
+};
+
+export default Rate;
