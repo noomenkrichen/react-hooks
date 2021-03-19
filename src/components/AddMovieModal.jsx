@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 
 function AddMovieModal(props) {
-  const [show, setShow] = useState(false);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [posterUrl, setPosterUrl] = useState("");
-  const [rate, setRate] = useState("");
-
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -23,34 +20,26 @@ function AddMovieModal(props) {
           <Modal.Title>Add New Movie</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Movie title..."
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            type="file"
-            name="posterUrl"
-            id="poster"
-            placeholder="Movie poster..."
-            onChange={(e) => setPosterUrl(e.target.value)}
-          />
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="10"
-            placeholder="Movie description"
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-          <input
-            type="number"
-            name="rate"
-            id="rate"
-            onChange={(e) => setRate(e.target.value)}
-          />
+          <Form>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="Enter movie title..."
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Form.File
+                id="posterUrl"
+                label="Choose poster URL:"
+                onChange={(e) => setPosterUrl(e.target.value)}
+              />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                placeholder="Enter movie description..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -63,7 +52,7 @@ function AddMovieModal(props) {
                 title: title,
                 description: description,
                 posterUrl: `img/${posterUrl.split("\\")[2]}`,
-                rate: rate,
+                rate: 0,
               })
             }
           >
