@@ -3,6 +3,7 @@ import AddMovieModal from "./components/AddMovieModal";
 import { useState } from "react";
 import "./App.css";
 import MyNavbar from "./components/MyNavbar";
+//import Rate from "./components/Rate";
 
 function App() {
   const createMovie = (title, description, posterUrl, rate) => {
@@ -95,6 +96,7 @@ function App() {
     <div className="App">
       <MyNavbar searchMovies={searchMovies} />
       <AddMovieModal addMovie={addMovie} />
+
       <div className="movie-list">
         <MovieList movies={display} />
       </div>

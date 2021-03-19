@@ -47,14 +47,15 @@ function AddMovieModal(props) {
           </Button>
           <Button
             variant="primary"
-            onClick={() =>
+            onClick={() => {
               props.addMovie({
                 title: title,
                 description: description,
                 posterUrl: `img/${posterUrl.split("\\")[2]}`,
                 rate: 0,
-              })
-            }
+              });
+              handleClose();
+            }}
           >
             Save Changes
           </Button>
