@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import ReactStars from "react-stars";
 
 function AddMovieModal(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [posterUrl, setPosterUrl] = useState("");
+  const [rate, setRate] = useState(0);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const ratingChanged = (newRating) => {
+    setRate(newRating);
+  };
 
   return (
     <>
@@ -38,6 +43,13 @@ function AddMovieModal(props) {
                 placeholder="Enter movie description..."
                 onChange={(e) => setDescription(e.target.value)}
               />
+              <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                color2={"#ffd700"}
+                value={rate}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -52,7 +64,7 @@ function AddMovieModal(props) {
                 title: title,
                 description: description,
                 posterUrl: posterUrl,
-                rate: 0,
+                rate: rate,
               });
               handleClose();
             }}
